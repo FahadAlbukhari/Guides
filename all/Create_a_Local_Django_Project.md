@@ -60,14 +60,15 @@ A guide for creating a Django project for use in both Local & Production (deploy
     # ~/Dev/cfehome/src/cfehome/settings/ on mac/linux
     # \Users\YourName\Dev\cfehome\src\cfehome\settings\ on windows
 
-    echo "from .base import *
-
-    from .production import *
-
-    try:
-       from .local import *
-    except:
-       pass
+    echo "import os
+    
+    from .base import *
+    
+    if 'VIRTUAL_ENV' in os.environ:
+        from .local import *
+    else:
+        from .production import *
+        
     " > __init__.py
     ```
     
