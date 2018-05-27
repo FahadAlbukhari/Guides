@@ -87,6 +87,8 @@ All three work together to make real-time magic.
         'django_celery_beat',
         'django_celery_results',
     ]
+    
+    TIME_ZONE = 'UTC'
 
 
     CELERY_BROKER_URL = 'redis://localhost:6379'
@@ -106,7 +108,7 @@ All three work together to make real-time magic.
     
 
     # set the default Django settings module for the 'celery' program.
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'red.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'proj.settings')
 
     app = Celery('proj')
 
@@ -251,6 +253,9 @@ FYI - To run a `beat` server like above, you will need a paid account.
         'django_celery_results',
         ## your apps
     ]
+    
+    TIME_ZONE = 'UTC'
+    
     CELERY_BROKER_URL=os.environ['REDIS_URL']
     CELERY_RESULT_BACKEND=os.environ['REDIS_URL']
 
